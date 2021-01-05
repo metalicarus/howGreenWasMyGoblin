@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import com.hobgoblin.howGreenWasMyGoblin.domain.Const;
 import com.hobgoblin.howGreenWasMyGoblin.entities.Role;
@@ -14,6 +15,7 @@ import com.hobgoblin.howGreenWasMyGoblin.entities.User;
 import com.hobgoblin.howGreenWasMyGoblin.repositories.RoleRepository;
 import com.hobgoblin.howGreenWasMyGoblin.repositories.UserRepository;
 
+@Component
 public class DataInitializr implements ApplicationListener<ContextRefreshedEvent>{
 	
 	@Autowired
@@ -29,10 +31,9 @@ public class DataInitializr implements ApplicationListener<ContextRefreshedEvent
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		List<User> users = userRepository.findAll();
-		
 		if(users.isEmpty()) {
-            createUser("Mateus", "admin", passwordEncoder.encode("123456"), Const.ROLE_ADMIN);
-          //  createUser("Renata", "admin", passwordEncoder.encode("123456"), Const.ROLE_ADMIN);
+            createUser("Mateus", "mateus@verdemeuduende.com.br", passwordEncoder.encode("123456"), Const.ROLE_ADMIN);
+            createUser("Renata", "renata@verdemeuduende.com.br", passwordEncoder.encode("123456"), Const.ROLE_ADMIN);
 
 		}
 		

@@ -1,10 +1,13 @@
 package com.hobgoblin.howGreenWasMyGoblin.config;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,6 +23,8 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
+import com.hobgoblin.howGreenWasMyGoblin.domain.Const;
+import com.hobgoblin.howGreenWasMyGoblin.entities.User;
 import com.hobgoblin.howGreenWasMyGoblin.service.MyUserDetailsService;
 
 @Configuration
@@ -37,7 +42,7 @@ public class OAuth2ServerConfiguration {
 		}
 
 		@Override
-		public void configure(HttpSecurity http) throws Exception {
+		public void configure(HttpSecurity http) throws Exception {			
 			http
 					.logout()
 					.invalidateHttpSession(true)
@@ -76,6 +81,8 @@ public class OAuth2ServerConfiguration {
 
 		@Override
 		public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+				
+ 			
 			clients
 					.inMemory()
 					.withClient("client")
@@ -86,7 +93,7 @@ public class OAuth2ServerConfiguration {
 					.secret(passwordEncoder
 					.encode("123"))
 					.accessTokenValiditySeconds(50000);
-
+ 
 		}
 
 		@Bean

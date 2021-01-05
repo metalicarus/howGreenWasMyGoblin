@@ -11,6 +11,7 @@ import org.springframework.web.filter.CorsFilter;
 public class HowGreenWasMyGoblinApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(HowGreenWasMyGoblinApplication.class, args);
 	}
 	
