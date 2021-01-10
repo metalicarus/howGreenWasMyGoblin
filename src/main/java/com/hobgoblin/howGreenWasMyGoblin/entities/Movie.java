@@ -1,11 +1,17 @@
 package com.hobgoblin.howGreenWasMyGoblin.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +25,17 @@ public class Movie implements Serializable{
 	private Long id;
 	private String title;
 	private String originalTitle;
+	private String cover;
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category category;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "movies_genres", 
+			joinColumns = @JoinColumn(name = "movie_id"),
+			inverseJoinColumns = @JoinColumn(name = "genre_id")
+	)
+	private List<Genre> genres;
 	
 	public Movie() {}
 	public Movie(Long id, String title, String originalTitle) {
@@ -45,6 +62,25 @@ public class Movie implements Serializable{
 	}
 	public void setOriginalTitle(String originalTitle) {
 		this.originalTitle = originalTitle;
+	}
+	public String getCover() {
+		return this.cover;
+	}
+	public void setCover(String cover) {
+		this.cover = cover;
+	}
+	public List<Genre> getGenres() {
+		return this.genres;
+	}
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	@Override
 	public int hashCode() {

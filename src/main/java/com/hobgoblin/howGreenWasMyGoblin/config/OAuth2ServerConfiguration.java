@@ -1,14 +1,10 @@
 package com.hobgoblin.howGreenWasMyGoblin.config;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,8 +19,6 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
-import com.hobgoblin.howGreenWasMyGoblin.domain.Const;
-import com.hobgoblin.howGreenWasMyGoblin.entities.User;
 import com.hobgoblin.howGreenWasMyGoblin.service.MyUserDetailsService;
 
 @Configuration
@@ -51,8 +45,9 @@ public class OAuth2ServerConfiguration {
 					.authorizeRequests()
 					.anyRequest()
 					.fullyAuthenticated();
-// 					.antMatchers(HttpMethod.OPTIONS, "/**")
-// 					.permitAll();
+ // 					.antMatchers(HttpMethod.OPTIONS, "/**", "/swagger-ui.html").permitAll()
+// 					.antMatchers("/api/**" ).authenticated();
+		 
 		}
 
 	}
