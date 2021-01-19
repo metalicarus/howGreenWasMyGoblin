@@ -3,6 +3,7 @@ package com.hobgoblin.howGreenWasMyGoblin.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,17 +24,20 @@ public class Movie implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false)
 	private String title;
+	@Column(nullable = false)
 	private String originalTitle;
+	@Column(nullable = false)
 	private String cover;
 	@ManyToOne
-	@JoinColumn(name = "category_id")
+	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "movies_genres", 
-			joinColumns = @JoinColumn(name = "movie_id"),
-			inverseJoinColumns = @JoinColumn(name = "genre_id")
+			joinColumns = @JoinColumn(name = "movie_id", nullable = false),
+			inverseJoinColumns = @JoinColumn(name = "genre_id", nullable = false)
 	)
 	private List<Genre> genres;
 	
