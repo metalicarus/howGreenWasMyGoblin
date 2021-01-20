@@ -40,12 +40,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers(HttpMethod.OPTIONS,
 									"/**",  
-									"/swagger-ui.html");
+									"/swagger-ui.html", "/swagger-ui.html");
 	}
-
+	 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
-
 }

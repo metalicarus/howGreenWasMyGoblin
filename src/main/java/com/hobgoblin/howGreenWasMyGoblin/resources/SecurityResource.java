@@ -13,7 +13,7 @@ import com.hobgoblin.howGreenWasMyGoblin.entities.User;
 @Controller
 public class SecurityResource {
 
-	@RequestMapping(value = "/user-auth", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/user-auth", method = RequestMethod.GET)
 	@ResponseBody
 	@Secured({ Const.ROLE_CLIENT, Const.ROLE_ADMIN })
 	public User user() {

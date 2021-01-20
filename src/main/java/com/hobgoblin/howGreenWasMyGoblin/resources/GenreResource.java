@@ -21,7 +21,7 @@ import com.hobgoblin.howGreenWasMyGoblin.entities.Genre;
 import com.hobgoblin.howGreenWasMyGoblin.repositories.GenreRepository;
 
 @RestController
-@RequestMapping(value = "/genres")
+@RequestMapping(value = "/api/genres")
 public class GenreResource {
 	
 	@Autowired

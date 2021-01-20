@@ -22,7 +22,7 @@ import com.hobgoblin.howGreenWasMyGoblin.entities.Movie;
 import com.hobgoblin.howGreenWasMyGoblin.repositories.MovieRepository;
 
 @RestController
-@RequestMapping(value = "/movies")
+@RequestMapping(value = "/api/movies")
  public class MovieResource {
 	
 	@Autowired

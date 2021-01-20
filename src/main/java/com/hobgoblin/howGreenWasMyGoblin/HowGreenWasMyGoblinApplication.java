@@ -1,5 +1,7 @@
 package com.hobgoblin.howGreenWasMyGoblin;
 
+import java.util.Arrays;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -21,8 +23,8 @@ public class HowGreenWasMyGoblinApplication extends SpringBootServletInitializer
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
+        config.addAllowedOriginPattern("*");
+        config.setAllowedHeaders(Arrays.asList("*"));
         config.addAllowedMethod("GET");
         config.addAllowedMethod("PUT");
         config.addAllowedMethod("POST");

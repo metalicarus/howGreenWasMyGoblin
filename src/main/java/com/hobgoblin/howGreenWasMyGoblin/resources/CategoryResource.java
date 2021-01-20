@@ -21,7 +21,7 @@ import com.hobgoblin.howGreenWasMyGoblin.entities.Category;
 import com.hobgoblin.howGreenWasMyGoblin.repositories.CategoryRepository;
 
 @RestController
-@RequestMapping(value = "/categories")
+@RequestMapping(value = "/api/categories")
 public class CategoryResource {
 
 	@Autowired

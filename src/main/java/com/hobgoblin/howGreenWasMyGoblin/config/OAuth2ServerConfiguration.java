@@ -38,24 +38,14 @@ public class OAuth2ServerConfiguration {
 
 		@Override
 		public void configure(HttpSecurity http) throws Exception {			
-//			http
-//					.logout()
-//					.invalidateHttpSession(true)
-//					.clearAuthentication(true)
-//					.and()
-//					.authorizeRequests()
-//					.anyRequest()
-//					.fullyAuthenticated();
- // 					.antMatchers(HttpMethod.OPTIONS, "/**", "/swagger-ui.html").permitAll()
-// 					.antMatchers("/api/**" ).authenticated();
 			http
-            .logout()
-            .invalidateHttpSession(true)
-            .clearAuthentication(true)
-            .and().authorizeRequests()
-            .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-            .anyRequest().fullyAuthenticated()
-            ;
+	            .logout()
+	       .invalidateHttpSession(true)
+	            .clearAuthentication(true)
+	            .and().csrf().disable().cors().and()
+	             .authorizeRequests()
+	            .antMatchers(HttpMethod.OPTIONS, "/**", "/swagger-ui.html", "/swagger-ui.html").permitAll();
+        //    .anyRequest().fullyAuthenticated();
  		}
 
 	}

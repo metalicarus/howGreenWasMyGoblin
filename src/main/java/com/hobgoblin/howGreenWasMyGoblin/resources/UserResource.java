@@ -20,7 +20,7 @@ import com.hobgoblin.howGreenWasMyGoblin.entities.User;
 import com.hobgoblin.howGreenWasMyGoblin.repositories.UserRepository;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserResource {
 
 	@Autowired
