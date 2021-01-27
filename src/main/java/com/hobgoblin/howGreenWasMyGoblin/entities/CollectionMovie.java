@@ -1,6 +1,5 @@
 package com.hobgoblin.howGreenWasMyGoblin.entities;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,27 +9,26 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-public class MovieCollection extends Collection implements Serializable{
+@Table(name= "movies_collections")
+public class CollectionMovie extends Collection {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "collections_movies", 
+	@JoinTable(name = "collection_movies", 
 			joinColumns = @JoinColumn(name = "collection_id", nullable = false),
 			inverseJoinColumns = @JoinColumn(name = "movie_id", nullable = false)
 	)
 	private List<Movie> movies;
 	
-	public MovieCollection() {}
-	public MovieCollection(Category category) {
+	public CollectionMovie() {}	
+	public CollectionMovie(Category category) {
 		this.category = category;
 	}
 	public Category getCategory() {
