@@ -8,20 +8,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "categories")
 public class Category implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank(message = "Name is mandatory")
 	@Column(unique = true, nullable = false)
 	private String name;
 	
 	public Category() {}
-	
 	public Category(Long id, String name) {
 		super();
 		this.id = id;
