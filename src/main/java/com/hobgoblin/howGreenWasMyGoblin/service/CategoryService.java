@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hobgoblin.howGreenWasMyGoblin.entities.Category;
 import com.hobgoblin.howGreenWasMyGoblin.repositories.CategoryRepository;
+import com.hobgoblin.howGreenWasMyGoblin.service.exceptions.DuplicateEntityException;
 import com.hobgoblin.howGreenWasMyGoblin.service.exceptions.EntityNotFoundException;
 import com.hobgoblin.howGreenWasMyGoblin.service.interfaces.CategoryServiceInterface;
 
@@ -33,6 +34,8 @@ public class CategoryService implements CategoryServiceInterface {
 
 	@Override
 	public Category save(Category category) {
+		if(categoryRepository.findByName(category.getName()) != null)
+			throw new DuplicateEntityException("Category name " + category.getName() + " already exists!");
 		return categoryRepository.save(category);
-	}
+	} 
 }

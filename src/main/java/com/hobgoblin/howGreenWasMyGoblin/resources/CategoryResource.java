@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,10 +35,11 @@ public class CategoryResource {
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Category getCategory(@PathVariable long id) {
+	public Category findById(@PathVariable long id) {
 		return categoryService.findById(id);
 	}
 	@PutMapping
+	@Validated
 	@ResponseStatus(HttpStatus.CREATED)
 	public Category store(@Valid @RequestBody Category category) {
   		return categoryService.save(category);
@@ -45,5 +47,5 @@ public class CategoryResource {
 	@DeleteMapping(value = "/{id}")
 	public void delete(@PathVariable long id) {
 		categoryService.deleteById(id);
-	}
+	}	
 }
