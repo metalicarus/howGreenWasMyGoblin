@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "movies")
@@ -24,10 +25,13 @@ public class Movie implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotNull(message = "title is mandatory")
 	@Column(nullable = false)
 	private String title;
+	@NotNull(message = "original title is mandatory")
 	@Column(nullable = false)
 	private String originalTitle;
+	@NotNull(message = "cover is mandatory")
 	@Column(nullable = false)
 	private String cover;
 	@ManyToOne

@@ -2,7 +2,8 @@ package com.hobgoblin.howGreenWasMyGoblin.resources;
 
 
 import java.util.List;
-import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,14 +20,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hobgoblin.howGreenWasMyGoblin.entities.Movie;
-import com.hobgoblin.howGreenWasMyGoblin.repositories.MovieRepository;
+import com.hobgoblin.howGreenWasMyGoblin.services.interfaces.MovieServiceInterface;
 
 @RestController
 @RequestMapping(value = "/api/movies")
  public class MovieResource {
 	
 	@Autowired
-	private MovieRepository movieRepository;
+	private MovieServiceInterface movieRepository;
 	
  	@GetMapping
 	public ResponseEntity<List<Movie>>findAll() {
@@ -34,16 +35,16 @@ import com.hobgoblin.howGreenWasMyGoblin.repositories.MovieRepository;
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Optional<Movie> getMovie(@PathVariable long id) {
+	public Movie getMovie(@PathVariable long id) {
 		return movieRepository.findById(id);
 	}
 	@PutMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Movie store(@RequestBody Movie movie) {
+	public Movie store(@Valid @RequestBody Movie movie) {
 		return movieRepository.save(movie);
 	}
 	@DeleteMapping(value = "/{id}")
 	public void delete(@PathVariable long id) {
-		movieRepository.deleteById(id);
+		movieRepository.delete(id);
 	}
 }

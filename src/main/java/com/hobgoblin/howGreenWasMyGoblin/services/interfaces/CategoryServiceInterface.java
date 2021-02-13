@@ -1,4 +1,4 @@
-package com.hobgoblin.howGreenWasMyGoblin.service.interfaces;
+package com.hobgoblin.howGreenWasMyGoblin.services.interfaces;
 
 import java.util.List;
 

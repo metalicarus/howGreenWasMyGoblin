@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.hobgoblin.howGreenWasMyGoblin.service.MyUserDetailsService;
+import com.hobgoblin.howGreenWasMyGoblin.services.MyUserDetailsService;
 
 @Configuration
 @EnableWebSecurity

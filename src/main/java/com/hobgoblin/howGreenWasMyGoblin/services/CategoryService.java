@@ -1,4 +1,4 @@
-package com.hobgoblin.howGreenWasMyGoblin.service;
+package com.hobgoblin.howGreenWasMyGoblin.services;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import com.hobgoblin.howGreenWasMyGoblin.entities.Category;
 import com.hobgoblin.howGreenWasMyGoblin.repositories.CategoryRepository;
 import com.hobgoblin.howGreenWasMyGoblin.service.exceptions.DuplicateEntityException;
 import com.hobgoblin.howGreenWasMyGoblin.service.exceptions.EntityNotFoundException;
-import com.hobgoblin.howGreenWasMyGoblin.service.interfaces.CategoryServiceInterface;
+import com.hobgoblin.howGreenWasMyGoblin.services.interfaces.CategoryServiceInterface;
 
 @Service
 public class CategoryService implements CategoryServiceInterface {

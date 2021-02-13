@@ -20,7 +20,7 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
-import com.hobgoblin.howGreenWasMyGoblin.service.MyUserDetailsService;
+import com.hobgoblin.howGreenWasMyGoblin.services.MyUserDetailsService;
 
 @Configuration
 public class OAuth2ServerConfiguration {

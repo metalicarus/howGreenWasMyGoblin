@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hobgoblin.howGreenWasMyGoblin.entities.Category;
-import com.hobgoblin.howGreenWasMyGoblin.service.interfaces.CategoryServiceInterface;
+import com.hobgoblin.howGreenWasMyGoblin.services.interfaces.CategoryServiceInterface;
 
 @RestController
 @RequestMapping(value = "/api/categories")

@@ -1,4 +1,4 @@
-package com.hobgoblin.howGreenWasMyGoblin.service;
+package com.hobgoblin.howGreenWasMyGoblin.services;
 
 import java.util.Collection;
 
