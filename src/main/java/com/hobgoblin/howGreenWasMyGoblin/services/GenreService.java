@@ -3,6 +3,7 @@ package com.hobgoblin.howGreenWasMyGoblin.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.hobgoblin.howGreenWasMyGoblin.entities.Genre;
 import com.hobgoblin.howGreenWasMyGoblin.repositories.GenreRepository;
@@ -10,6 +11,7 @@ import com.hobgoblin.howGreenWasMyGoblin.service.exceptions.DuplicateEntityExcep
 import com.hobgoblin.howGreenWasMyGoblin.service.exceptions.EntityNotFoundException;
 import com.hobgoblin.howGreenWasMyGoblin.services.interfaces.GenreServiceInterface;
 
+@Service
 public class GenreService implements GenreServiceInterface{
 	
 	@Autowired
