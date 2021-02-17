@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -34,11 +33,15 @@ public class Movie implements Serializable{
 	@NotNull(message = "cover is mandatory")
 	@Column(nullable = false)
 	private String cover;
-	@ManyToOne
-	@JoinColumn(name = "category_id", nullable = false)
-	private Category category;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "movies_categories", 
+			joinColumns = @JoinColumn(name = "movie_id", nullable = false),
+			inverseJoinColumns = @JoinColumn(name = "category_id", nullable = false)
+	)
+	private List<Category> categories;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "movies_genres", 
 			joinColumns = @JoinColumn(name = "movie_id", nullable = false),
 			inverseJoinColumns = @JoinColumn(name = "genre_id", nullable = false)
@@ -46,11 +49,14 @@ public class Movie implements Serializable{
 	private List<Genre> genres;
 	
 	public Movie() {}
-	public Movie(Long id, String title, String originalTitle) {
+	public Movie(Long id, String title, String originalTitle, String cover, List<Category> categories, List<Genre> genres) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.originalTitle = originalTitle;
+		this.cover = cover;
+		this.categories = categories;
+		this.genres = genres;
 	}
 	
 	public Long getId() {
@@ -84,11 +90,11 @@ public class Movie implements Serializable{
 		this.genres = genres;
 	}
 	
-	public Category getCategory() {
-		return category;
+	public List<Category> getCategories() {
+		return categories;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 	@Override
 	public int hashCode() {
