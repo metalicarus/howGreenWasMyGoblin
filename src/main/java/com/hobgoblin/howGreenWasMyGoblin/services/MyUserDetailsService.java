@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.hobgoblin.howGreenWasMyGoblin.entities.User;
-import com.hobgoblin.howGreenWasMyGoblin.repositories.UserRepository;
+import com.hobgoblin.howGreenWasMyGoblin.repositories.interaces.UserRepository;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService{

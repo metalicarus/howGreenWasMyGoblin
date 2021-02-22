@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 import com.hobgoblin.howGreenWasMyGoblin.domain.Const;
 import com.hobgoblin.howGreenWasMyGoblin.entities.Role;
 import com.hobgoblin.howGreenWasMyGoblin.entities.User;
-import com.hobgoblin.howGreenWasMyGoblin.repositories.RoleRepository;
-import com.hobgoblin.howGreenWasMyGoblin.repositories.UserRepository;
+import com.hobgoblin.howGreenWasMyGoblin.repositories.interaces.RoleRepository;
+import com.hobgoblin.howGreenWasMyGoblin.repositories.interaces.UserRepository;
 
 @Component
 public class DataInitializr implements ApplicationListener<ContextRefreshedEvent>{

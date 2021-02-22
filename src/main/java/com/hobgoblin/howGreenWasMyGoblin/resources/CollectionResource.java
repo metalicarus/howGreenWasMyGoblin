@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hobgoblin.howGreenWasMyGoblin.entities.Collection;
-import com.hobgoblin.howGreenWasMyGoblin.repositories.CollectionRepository;
+import com.hobgoblin.howGreenWasMyGoblin.repositories.interaces.CollectionRepository;
 
 @RestController
 @RequestMapping(value = "/api/collections")

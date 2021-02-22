@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hobgoblin.howGreenWasMyGoblin.entities.CollectionMovie;
-import com.hobgoblin.howGreenWasMyGoblin.repositories.CollectionMovieRepository;
+import com.hobgoblin.howGreenWasMyGoblin.repositories.interaces.CollectionMovieRepository;
 
 @RestController
 @RequestMapping(value = "/api/collectionsMovies")

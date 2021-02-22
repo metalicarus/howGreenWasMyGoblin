@@ -1,7 +1,7 @@
 package com.hobgoblin.howGreenWasMyGoblin.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +15,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+ 
 @Table(name = "movies")
+//@JsonIgnoreProperties({"categories", "genres"})
 public class Movie implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -34,22 +38,22 @@ public class Movie implements Serializable{
 	@Column(nullable = false)
 	private String cover;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "movies_categories", 
 			joinColumns = @JoinColumn(name = "movie_id", nullable = false),
 			inverseJoinColumns = @JoinColumn(name = "category_id", nullable = false)
 	)
-	private List<Category> categories;
+	private Set<Category> categories;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "movies_genres", 
 			joinColumns = @JoinColumn(name = "movie_id", nullable = false),
 			inverseJoinColumns = @JoinColumn(name = "genre_id", nullable = false)
 	)
-	private List<Genre> genres;
+	private Set<Genre> genres;
 	
 	public Movie() {}
-	public Movie(Long id, String title, String originalTitle, String cover, List<Category> categories, List<Genre> genres) {
+	public Movie(Long id, String title, String originalTitle, String cover, Set<Category> categories, Set<Genre> genres) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -83,17 +87,17 @@ public class Movie implements Serializable{
 	public void setCover(String cover) {
 		this.cover = cover;
 	}
-	public List<Genre> getGenres() {
+	public Set<Genre> getGenres() {
 		return this.genres;
 	}
-	public void setGenres(List<Genre> genres) {
+	public void setGenres(Set<Genre> genres) {
 		this.genres = genres;
 	}
 	
-	public List<Category> getCategories() {
+	public Set<Category> getCategories() {
 		return categories;
 	}
-	public void setCategories(List<Category> categories) {
+	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
 	}
 	@Override

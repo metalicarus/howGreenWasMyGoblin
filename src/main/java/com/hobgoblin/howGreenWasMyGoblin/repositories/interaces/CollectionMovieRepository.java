@@ -1,4 +1,4 @@
-package com.hobgoblin.howGreenWasMyGoblin.repositories;
+package com.hobgoblin.howGreenWasMyGoblin.repositories.interaces;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

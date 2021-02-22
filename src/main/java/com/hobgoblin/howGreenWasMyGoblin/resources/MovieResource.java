@@ -27,24 +27,24 @@ import com.hobgoblin.howGreenWasMyGoblin.services.interfaces.MovieServiceInterfa
  public class MovieResource {
 	
 	@Autowired
-	private MovieServiceInterface movieRepository;
+	private MovieServiceInterface movieService;
 	
  	@GetMapping
 	public ResponseEntity<List<Movie>>findAll() {
-		return ResponseEntity.ok(movieRepository.findAll());
+		return ResponseEntity.ok(movieService.findAll());
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Movie getMovie(@PathVariable long id) {
-		return movieRepository.findById(id);
+		return movieService.findById(id);
 	}
 	@PutMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Movie store(@Valid @RequestBody Movie movie) {
-		return movieRepository.save(movie);
+		return movieService.save(movie);
 	}
 	@DeleteMapping(value = "/{id}")
 	public void delete(@PathVariable long id) {
-		movieRepository.delete(id);
+		movieService.delete(id);
 	}
 }

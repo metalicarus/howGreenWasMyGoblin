@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hobgoblin.howGreenWasMyGoblin.domain.Const;
 import com.hobgoblin.howGreenWasMyGoblin.entities.User;
-import com.hobgoblin.howGreenWasMyGoblin.repositories.UserRepository;
+import com.hobgoblin.howGreenWasMyGoblin.repositories.interaces.UserRepository;
 
 @RestController
 @RequestMapping("/api/users")

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hobgoblin.howGreenWasMyGoblin.entities.Category;
-import com.hobgoblin.howGreenWasMyGoblin.repositories.CategoryRepository;
+import com.hobgoblin.howGreenWasMyGoblin.repositories.interaces.CategoryRepository;
 import com.hobgoblin.howGreenWasMyGoblin.service.exceptions.DuplicateEntityException;
 import com.hobgoblin.howGreenWasMyGoblin.service.exceptions.EntityNotFoundException;
 import com.hobgoblin.howGreenWasMyGoblin.services.interfaces.CategoryServiceInterface;
